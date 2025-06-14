@@ -41,7 +41,7 @@ public class XmlReaderService {
 
                 String firstname2 = root.getPerson().getFirstname2();
                 if (firstname2 == null || firstname2.isBlank()) {
-                    System.out.println("⚠️ Archivo omitido (sin firstname2): " + file.getName());
+                    System.out.println("Archivo omitido (sin firstname2): " + file.getName());
                     continue;
                 }
 
@@ -55,11 +55,11 @@ public class XmlReaderService {
                 }
 
                 String json = objectMapper.writeValueAsString(root);
-                System.out.println("✅ JSON generado de " + file.getName() + ":");
+                System.out.println("JSON generado de " + file.getName() + ":");
                 System.out.println(json);
 
                 kafkaTemplate.send("kafka-topic-01", json);
-                System.out.println("📤 Enviado a Kafka: kafka-topic-01");
+                System.out.println("Enviado a Kafka: kafka-topic-01");
 
             } catch (Exception e) {
                 System.out.println("Error al procesar el archivo: " + file.getName() + ": " + e.getMessage());
