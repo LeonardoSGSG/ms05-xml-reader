@@ -23,7 +23,7 @@ public class XmlReaderService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    @Scheduled(fixedRate = 2500)
+    @Scheduled(initialDelay = 0, fixedRate = 180000)
     public void readXmlFiles() {
         File folder = new File("xml-testing");
         File[] files = folder.listFiles((dir, name) -> name.endsWith(".xml"));
